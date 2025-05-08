@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .terminal {
+    width: 90%;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: #111;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #0f0;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    background: black;
+    color: #0f0;
+    border: 1px solid #0f0;
+    margin-bottom: 10px;
+    font-family: monospace;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background: #0f0;
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    background: #00aa00;
+  }
+  
+  #message {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  /* 揺れるアニメーション */
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+  
+  .shake {
+    animation: shake 0.5s;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .terminal {
+    width: 90%;
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: #111;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #0f0;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    margin-top: 20px;
+    width: 80%;
+    padding: 10px;
+    background: #0f0;
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 10px #0f0;
+    transition: all 0.3s;
+  }
+  
+  button:hover {
+    background: #00aa00;
+    box-shadow: 0 0 20px #0f0;
+  }
+  
+  .loader {
+    margin: 20px auto;
+    width: 100px;
+    height: 10px;
+    background: #222;
+    border: 1px solid #0f0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .loader::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    background: #0f0;
+    animation: loading 2s linear infinite;
+  }
+  
+  @keyframes loading {
+    0% { left: -30px; }
+    100% { left: 100%; }
+  }
+  

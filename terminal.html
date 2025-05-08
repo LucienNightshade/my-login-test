@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>秘密基地 - ターミナル</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="terminal terminal-active">
+    <h1>> SYSTEM BOOTING...</h1>
+    <p id="output">準備完了...</p>
+    <input type="text" id="commandInput" placeholder="コマンドを入力してください..." autofocus>
+    <button onclick="executeCommand()">実行</button>
+  </div>
+
+  <script>
+    const output = document.getElementById("output");
+    const commandInput = document.getElementById("commandInput");
+
+    // シンプルなコマンドのチェック
+    function executeCommand() {
+      const command = commandInput.value.trim().toLowerCase();
+
+      // 出力処理
+      if (command === "scan") {
+        output.innerHTML = "> スキャン開始...<br>進行中...<br>スキャン完了";
+      } else if (command === "login admin") {
+        output.innerHTML = "> 管理者ログイン完了。<br>アクセス権限取得";
+      } else if (command === "show secrets") {
+        output.innerHTML = "> 秘密情報表示中...<br>アクセス中...";
+      } else {
+        output.innerHTML = "> コマンドが無効です";
+      }
+
+      // コマンド入力後に空にしてフォーカス
+      commandInput.value = "";
+      commandInput.focus();
+    }
+  </script>
+</body>
+</html>
