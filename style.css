@@ -134,5 +134,17 @@ body {
   @keyframes loading {
     0% { left: -30px; }
     100% { left: 100%; }
+.cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: #00ff00;
+      animation: blink 1s step-start infinite;
+      margin-left: 2px;
+    }
+    
+@keyframes blink {
+  50% {
+    opacity: 0;
+      }
   }
   

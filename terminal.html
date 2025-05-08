@@ -4,37 +4,93 @@
   <meta charset="UTF-8">
   <title>秘密基地 - ターミナル</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .console {
+      max-width: 600px;
+      margin: 100px auto;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      background: #000;
+      padding: 20px;
+      border: 2px solid #0f0;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #0f0;
+    }
+
+    .output {
+      white-space: pre-wrap;
+      min-height: 150px;
+    }
+
+    .input-line {
+      display: flex;
+    }
+
+    .input-line span {
+      margin-right: 5px;
+    }
+
+    .blinking {
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    input {
+      background: transparent;
+      border: none;
+      color: #0f0;
+      font: inherit;
+      outline: none;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-  <div class="terminal terminal-active">
-    <h1>> SYSTEM BOOTING...</h1>
-    <p id="output">準備完了...</p>
-    <input type="text" id="commandInput" placeholder="コマンドを入力してください..." autofocus>
-    <button onclick="executeCommand()">実行</button>
+  <div class="console">
+    <div class="output" id="output">
+      > 接続完了...  
+      > コマンドを入力してください。
+    </div>
+    <div class="input-line">
+      <span>&gt;</span><input type="text" id="command" autofocus>
+      <span class="blinking">_</span>
+    </div>
   </div>
 
   <script>
+    const input = document.getElementById("command");
     const output = document.getElementById("output");
-    const commandInput = document.getElementById("commandInput");
 
-    // シンプルなコマンドのチェック
-    function executeCommand() {
-      const command = commandInput.value.trim().toLowerCase();
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        const cmd = input.value.trim();
+        if (cmd) {
+          output.innerText += `\n> ${cmd}`;
+          fakeResponse(cmd);
+          input.value = "";
+        }
+      }
+    });
 
-      // 出力処理
-      if (command === "scan") {
-        output.innerHTML = "> スキャン開始...<br>進行中...<br>スキャン完了";
-      } else if (command === "login admin") {
-        output.innerHTML = "> 管理者ログイン完了。<br>アクセス権限取得";
-      } else if (command === "show secrets") {
-        output.innerHTML = "> 秘密情報表示中...<br>アクセス中...";
+    function fakeResponse(cmd) {
+      if (cmd === "trace") {
+        output.innerText += "\nログ解析中...";
+        setTimeout(() => {
+          output.innerText += "\nIPアドレス追跡成功：127.0.0.1";
+        }, 1000);
+      } else if (cmd === "analyze") {
+        output.innerText += "\nウイルス解析中...";
+        setTimeout(() => {
+          output.innerText += "\n警告：不正なシグネチャ検出！";
+        }, 1000);
       } else {
-        output.innerHTML = "> コマンドが無効です";
+        output.innerText += "\nコマンドが認識されません。";
       }
 
-      // コマンド入力後に空にしてフォーカス
-      commandInput.value = "";
-      commandInput.focus();
+      output.scrollTop = output.scrollHeight;
     }
   </script>
 </body>
